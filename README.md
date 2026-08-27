@@ -66,7 +66,7 @@ cargo build --release
 
 ### 2. Build the Bare-Metal RTOS
 
-Requires an embedded C toolchain (e.g., arm-none-eabi-gcc) without standard library links.
+Requires an embedded C toolchain (e.g., `arm-none-eabi-gcc`) without standard library links.
 
 ```bash
 cd ../laser_timing_rtos

@@ -1,0 +1,33 @@
+# OS & IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Rust / Cargo
+droplet_synchronization/target/
+**/*.rs.bk
+Cargo.lock
+
+# C / Bare-Metal Build Artifacts
+interferometry_core/build/
+laser_timing_rtos/build/
+CMakeCache.txt
+CMakeFiles/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+
+# Embedded Binaries & Memory Maps
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+# Python / Simulation Data
+__pycache__/
+*.pyc
+logs/

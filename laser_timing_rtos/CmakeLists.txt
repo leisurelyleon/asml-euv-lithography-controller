@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 3.24)
+project(ASML_Laser_RTOS VERSION 1.0.0 LANGUAGES C)
+
+# Bare-metal C configuration - No standard library, no OS overhead
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+
+# Aggressive optimizations for hard real-time execution
+add_compile_options(
+    -O3 
+    -ffast-math 
+    -fno-builtin 
+    -ffreestanding 
+    -nostdlib 
+    -Wall 
+    -Wextra 
+    -Werror
+)
+
+# Source files
+set(RTOS_SOURCES
+    src/rtos_scheduler.c
+    src/co2_laser_driver.c
+    src/safety_interlock.c
+)
+
+add_executable(laser_rtos.elf ${RTOS_SOURCES})
+
+# Include directories
+target_include_directories(laser_rtos.elf PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+# In a real environment, this would link a custom linker script (.ld) 
+# to map memory addresses directly to the microcontroller's ROM/RAM.
+# set_target_properties(laser_rtos.elf PROPERTIES LINK_FLAGS "-T ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld")

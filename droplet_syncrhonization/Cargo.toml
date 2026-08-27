@@ -1,0 +1,18 @@
+[package]
+name = "droplet_synchronization"
+version = "1.0.0"
+edition = "2021"
+authors = ["ASML Architecture Simulation"]
+description = "High-frequency molten tin droplet trajectory and physics engine"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
